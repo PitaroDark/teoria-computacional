@@ -43,13 +43,16 @@ def main():
             print("Opcion no encontrada")
             sys.exit()
     elif opc == 3:
-        potencia() #w1
+        print("Ingresa la potnecia n = ", end="")
+        print(potencia(int(input()), w1)) #w1
     elif opc == 4:
-        pre_suf() #w2
+        print("PREFIJO")
+        prefijo(w2)
+        print("SUFIJO")
+        sufijo(w2)
     else:
         print("Opcion no encontrada")
         sys.exit()
-
     
 def menu():
     print("1 -> Concatenacion")
@@ -58,7 +61,7 @@ def menu():
     print("4 -> Prefijos/Sufijos -> w2")
     print("Ingresa tu opcion -> ", end="")
     opc = input()
-    return opc
+    return int(opc)
 
 def submenu_concat():
     print("1 -> w1w2")
@@ -66,7 +69,7 @@ def submenu_concat():
     print("3 -> w2w2")
     print("Ingresa la opcion deseada -> ", end="")
     opc = input()
-    return opc
+    return int(opc)
 
 def submenu_long():
     print("1 -> |w1|")
@@ -75,11 +78,27 @@ def submenu_long():
     opc = input()
     return opc
 
-def potencia():
-    print()
+def potencia(n, string):
+    if n > 0:
+        return string * n
+    elif n == 0:
+        return "(CADENA_VACIA)"
+    else:
+        return str(string[::-1])*(n*-1)
 
-def pre_suf():
-    print()
+def prefijo(string):
+    prefijo = ""
+    print("(Void)")
+    for char in string:
+        prefijo += char
+        print(prefijo)
+
+def sufijo(string):
+    sufijo = ""
+    print("(Void)")
+    for char in string[::-1]:
+        sufijo += char
+        print(sufijo) 
 
 def verifyString(string, sigma):
     for char in string:
